@@ -8,6 +8,11 @@ module.exports = app => {
 	// handle the request to get more info because google has given redirect code link
 	app.get('/auth/google/callback', passport.authenticate('google'));
 
+	app.get('/api/logout', (req, res) => {
+		req.logout();
+		res.send(req.user);
+	});
+
 	app.get('/api/current_user', (req, res) => {
 		console.log("/api/current_user route");
 		console.log(req);
